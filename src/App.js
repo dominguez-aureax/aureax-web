@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
-import { Dashboard, Preferences } from './pages';
+import { Dashboard, Login, Preferences } from './pages';
 
 function App() {
   const [token, setToken] = useState();
