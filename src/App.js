@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
+import { useToken } from './components';
 import { Dashboard, Login, Preferences } from './pages';
 
 function setToken(userToken) {
