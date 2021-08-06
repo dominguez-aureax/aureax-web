@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
 
 import { useToken } from './components';
