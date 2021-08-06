@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { BrowserRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './index.css';
@@ -17,13 +19,13 @@ async function loginUser(credentials) {
 }
 
 export default function Login({ setToken }) {
-  const [username, setUserName] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await loginUser({
-      username,
+      email,
       password,
     });
     setToken(token);
@@ -32,21 +34,43 @@ export default function Login({ setToken }) {
   return (
     <div className='login-wrapper'>
       <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-          <input type='text' onChange={(e) => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input type='password' />
-        </label>
-        <div>
-          <button type='submit' onChange={(e) => setPassword(e.target.value)}>
-            Submit
-          </button>
+
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className='mb-3' controlId='formBasicEmail'>
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type='email'
+            placeholder='Enter Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className='mb-3' controlId='formBasicPassword'>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Enter Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+          <Form.Check type='checkbox' label='Remember Me' />
+        </Form.Group>
+
+        <Button variant='primary' type='submit'>
+          Log In
+        </Button>
+
+        <div className='text-center'>
+          Need an account?
+          <BrowserRouter>
+            <Link to='/signup'>Sign Up!</Link>
+          </BrowserRouter>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
