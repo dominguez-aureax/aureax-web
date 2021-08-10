@@ -17,18 +17,14 @@ function App() {
       <BrowserRouter>
         <header />
         <Switch>
-          <Route exact path='/'>
-            <Login setToken={setToken} />
-          </Route>
+          <Route exact path='/' component={() => <Login setToken={setToken} />} />
           <Route path='/dashboard'>
             <Dashboard />
           </Route>
           <Route path='/preferences'>
             <Preferences />
           </Route>
-          <Route path='/signup'>
-            <SignUp />
-          </Route>
+          <Route path='/signup' component={() => <SignUp />} />
         </Switch>
       </BrowserRouter>
     </div>
