@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './index.css';
@@ -66,9 +66,9 @@ export default function Login({ setToken }) {
 
         <div className='text-center'>
           Need an account?
-          <BrowserRouter>
+          <li>
             <Link to='/signup'>Sign Up!</Link>
-          </BrowserRouter>
+          </li>
         </div>
       </Form>
     </div>

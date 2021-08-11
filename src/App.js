@@ -12,22 +12,17 @@ function App() {
   const { token, setToken } = useToken();
 
   return (
-    <div className='wrapper'>
-      <h1>Application</h1>
-      <BrowserRouter>
-        <header />
+    <BrowserRouter>
+      <div className='app'>
+        <h1>Application</h1>
         <Switch>
           <Route exact path='/' component={() => <Login setToken={setToken} />} />
-          <Route path='/dashboard'>
-            <Dashboard />
-          </Route>
-          <Route path='/preferences'>
-            <Preferences />
-          </Route>
-          <Route path='/signup' component={() => <SignUp />} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/preferences' component={Preferences} />
+          <Route path='/dashboard' component={Dashboard} />
         </Switch>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
