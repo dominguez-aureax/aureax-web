@@ -20,7 +20,7 @@ export default function Login() {
     try {
       setError('');
       setLoading(true);
-      await login(emailRef.current.value, passwordref.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
       history.push('/');
     } catch {
       setError('Failed to log in');

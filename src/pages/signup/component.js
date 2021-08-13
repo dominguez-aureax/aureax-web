@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/auth_context';
@@ -13,7 +13,6 @@ export default function SignUp() {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
-  /*eslint-disable */
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -40,6 +39,7 @@ export default function SignUp() {
   return (
     <div className='signup-wrapper'>
       <h1>Sign Up</h1>
+      {error && <Alert variant='danger'>{error}</Alert>}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3' controlId='signupFullName'>
