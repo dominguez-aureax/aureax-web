@@ -1,66 +1,55 @@
-import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { Button, Form, Alert } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { useAuth } from '../../contexts/auth_context';
+
 import './index.css';
+export default function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { login } = useAuth();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
-// make a POST request to the server.
-// TODO: put this in a separate directory, you'll add the service directly to
-// the component
-async function loginUser(credentials) {
-  return fetch('http://localhost:8080/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
-
-export default function Login({ setToken }) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const token = await loginUser({
-      email,
-      password,
-    });
-    setToken(token);
-  };
+
+    try {
+      setError('');
+      setLoading(true);
+      await login(emailRef.current.value, passwordref.current.value);
+      history.push('/');
+    } catch {
+      setError('Failed to log in');
+    }
+
+    setLoading(false);
+  }
 
   return (
     <div className='login-wrapper'>
       <h1>Please Log In</h1>
+      {error && <Alert variant='danger'>{error}</Alert>}
 
       <Form onSubmit={handleSubmit}>
-        <Form.Group className='mb-3' controlId='formBasicEmail'>
+        <Form.Group className='mb-3' controlId='loginEmail'>
           <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Enter Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <Form.Control type='email' placeholder='Enter Email' ref={emailRef} required />
         </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicPassword'>
+        <Form.Group className='mb-3' controlId='loginPassword'>
           <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Enter Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <Form.Control type='password' placeholder='Enter Password' ref={passwordRef} required />
         </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+        <Form.Group className='mb-3' controlId='loginCheckbox'>
           <Form.Check type='checkbox' label='Remember Me' />
         </Form.Group>
 
-        <Button variant='primary' type='submit'>
+        <Button disabled={loading} variant='primary' type='submit'>
           Log In
         </Button>
 
