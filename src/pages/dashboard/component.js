@@ -1,17 +1,29 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 
 import { useAuth } from '../../contexts/auth_context';
 
-export default function Dashboard() {
+import { Layout } from '../../components';
+
+const Component = () => {
   const { logout } = useAuth();
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <Button variant='primary' type='submit' onClick={logout}>
-        Sign Out
-      </Button>
-    </div>
+    <Layout>
+      <div className='dashboard'>
+        <Alert variant='info'>TODO: DASHBOARD PAGE</Alert>
+        <Button variant='primary' type='submit' onClick={logout}>
+          Sign Out
+        </Button>
+      </div>
+    </Layout>
   );
-}
+};
+
+Component.displayName = 'Dashboard';
+
+Component.propTypes = {};
+
+Component.defaultProps = {};
+
+export default Component;

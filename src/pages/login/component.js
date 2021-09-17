@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 import { useAuth } from '../../contexts/auth_context';
 
-import './index.css';
+import './index.scss';
+
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();

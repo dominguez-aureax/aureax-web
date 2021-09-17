@@ -1,0 +1,22 @@
+.sidebar {
+  background-color: #232931;
+  height: 100vh;
+  overflow: scroll initial;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  .company-row {
+    height: 100%;
+
+    .logo {
+      width: 30%;
+      object-fit: contain;
+    }
+
+    .company-name {
+      width: 60%;
+    }
+  }
+}

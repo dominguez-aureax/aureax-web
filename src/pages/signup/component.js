@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/auth_context';
 
-import './index.css';
+import './index.scss';
 
 export default function SignUp() {
   const nameRef = useRef();
