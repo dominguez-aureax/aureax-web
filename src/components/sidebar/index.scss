@@ -1,5 +1,9 @@
+@use '../../App.scss' as app;
+
+$background-color: app.$secondary-color;
+
 .sidebar {
-  background-color: #232931;
+  background-color: $background-color;
   height: 100vh;
   overflow: scroll initial;
   flex: 1;
