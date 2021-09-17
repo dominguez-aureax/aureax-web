@@ -10,7 +10,7 @@ import { Dashboard, Login, Preferences, SignUp } from './pages';
 import { AuthProvider } from './contexts/auth_context';
 function App() {
   return (
-    <div className='app align-items-center justify-content-center' style={{ minHeight: '100vh' }}>
+    <div className='App align-items-center justify-content-center' style={{ minHeight: '100vh' }}>
       <BrowserRouter>
         <AuthProvider>
           <Switch>

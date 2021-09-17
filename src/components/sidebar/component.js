@@ -8,7 +8,6 @@ import './index.scss';
 const Component = () => {
   const [collapseOpen, setCollapseOpen] = useState();
   const logo = <img className='logo' src='./favicon.ico' />;
-  const companyName = 'Aureax';
 
   // toggles collapse between opened and closed (true/false)
   const toggleCollapse = () => {
@@ -21,12 +20,12 @@ const Component = () => {
 
   return (
     <Navbar className='sidebar' expand='m' id='sidebar-main'>
-      <Container fluid>
-        <Row className='company-row'>
-          {logo}
-          <h3 className='company-name'>{companyName}</h3>
-        </Row>
-      </Container>
+      <Row className='company-row'>{logo}</Row>
+      <div className='line' />
+      <Nav.Link href='/'>Members</Nav.Link>
+      <Nav.Link href='/'>Referrals</Nav.Link>
+      <Nav.Link href='/'>Jobs</Nav.Link>
+      <Nav.Link href='/'>Campaign</Nav.Link>
     </Navbar>
   );
 };
