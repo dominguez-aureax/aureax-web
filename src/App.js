@@ -6,7 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
 import { PrivateRoute } from './components';
-import { Dashboard, Login, Preferences, SignUp } from './pages';
+import { Dashboard, Login, NotFound, Preferences, SignUp } from './pages';
 import { AuthProvider } from './contexts/auth_context';
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
             <Route path='/signup' component={SignUp} />
             <Route path='/preferences' component={Preferences} />
             <Route path='/dashboard' component={Dashboard} />
+            <Route component={NotFound} />
           </Switch>
         </AuthProvider>
       </BrowserRouter>

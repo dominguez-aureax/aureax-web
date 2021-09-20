@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import { Collapse, Container, Row, Nav, Navbar } from 'react-bootstrap';
-import { MdPeople, MdPersonAdd, MdLibraryAdd, MdStarBorder } from 'react-icons/md';
+import { MdPeople, MdPersonAdd, MdLibraryAdd, MdStarBorder, MdPieChart } from 'react-icons/md';
 
 import './index.scss';
 
@@ -22,19 +22,23 @@ const Component = () => {
     <Navbar className='sidebar' expand='m' id='sidebar-main'>
       <Row className='company-row'>{logo}</Row>
       <div className='line' />
-      <Nav.Link href='/'>
+      <Nav.Link href='/dashboard'>
+        <MdPieChart size={25} />
+        Dashboard
+      </Nav.Link>
+      <Nav.Link href='/members'>
         <MdPeople size={25} />
         Members
       </Nav.Link>
-      <Nav.Link href='/'>
+      <Nav.Link href='/referrals'>
         <MdPersonAdd size={25} />
         Referrals
       </Nav.Link>
-      <Nav.Link href='/'>
+      <Nav.Link href='/jobs'>
         <MdLibraryAdd size={25} />
         Jobs
       </Nav.Link>
-      <Nav.Link href='/'>
+      <Nav.Link href='/campaign'>
         <MdStarBorder size={25} />
         Campaign
       </Nav.Link>
