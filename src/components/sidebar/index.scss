@@ -1,10 +1,10 @@
 @use '../../App.scss' as app;
 
-$background-color: app.$secondary-color;
-$primary-color: app.$primary-color;
+$backgroundColor: app.$secondaryColor;
+$primaryColor: app.$primaryColor;
 
 .sidebar {
-  background-color: $background-color;
+  background-color: $backgroundColor;
   height: 100vh;
   overflow: scroll initial;
   flex: 1;
@@ -14,7 +14,7 @@ $primary-color: app.$primary-color;
 
   .line {
     border-top: 1px solid;
-    color: $primary-color;
+    color: $primaryColor;
     height: 1px;
     width: 80%;
     margin-top: 1rem;
@@ -36,7 +36,7 @@ $primary-color: app.$primary-color;
     align-content: center;
 
     &.active {
-      border-left: 5px solid $primary-color;
+      border-left: 5px solid $primaryColor;
     }
 
     svg {

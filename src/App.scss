@@ -1,22 +1,21 @@
-// Change default bootstrap theme
-$background-color: #232931;
-$primary-color: #eeeeee;
-$secondary-color: #1a40be;
+$backgroundColor: #232931 !default;
+$primaryColor: #eeeeee !default;
+$secondaryColor: #1a40be !default;
 
 $theme-colors: (
-  'primary': $secondary-color,
-);
+  'primary': $secondaryColor,
+) !default;
 
 hr {
-  color: $primary-color;
+  color: $primaryColor;
 }
 
 .navbar-brand {
-  color: $primary-color;
+  color: $primaryColor;
 }
 
 body {
-  color: $primary-color;
+  color: $primaryColor;
 }
 
 h1,
@@ -24,7 +23,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: $primary-color;
+  color: $primaryColor;
 }
 
 @import '~bootstrap/scss/bootstrap';
@@ -37,6 +36,6 @@ h5 {
   background-color: #232931;
 
   a {
-    color: $primary-color;
+    color: $primaryColor;
   }
 }
