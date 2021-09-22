@@ -1,32 +1,20 @@
-/* eslint-disable */
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router';
-import { Collapse, Container, Row, Nav, Navbar } from 'react-bootstrap';
+import { Row, Nav, Navbar } from 'react-bootstrap';
 import { MdPeople, MdPersonAdd, MdLibraryAdd, MdStarBorder, MdPieChart } from 'react-icons/md';
 
 import './index.scss';
 
 const Component = () => {
-  const [collapseOpen, setCollapseOpen] = useState();
   const logo = <img className='logo' src='./favicon.ico' />;
   const location = useLocation();
-  console.log(`Sidebar --- ${location.pathname}`);
 
   const activeRoute = (routeName) => {
     return location.pathname.indexOf(routeName) > -1 ? true : false;
   };
 
-  // toggles collapse between opened and closed (true/false)
-  const toggleCollapse = () => {
-    setCollapseOpen((data) => !data);
-  };
-
-  const closeCollapse = () => {
-    setCollapseOpen(false);
-  };
-
   return (
-    <Navbar className='sidebar' expand='m' id='sidebar-main'>
+    <Navbar className='sidebar' expand='s' id='sidebar-main'>
       <Row className='company-row'>{logo}</Row>
       <div className='line' />
       <Nav.Link href='/dashboard' active={activeRoute('/dashboard')}>
