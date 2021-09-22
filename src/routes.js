@@ -24,8 +24,10 @@ var routes = [
   },
   {
     path: '/members',
-  },  
+  },
   {
     path: '/referrals',
   },
 ];
+
+export default routes;
