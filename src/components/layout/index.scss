@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+
+  .sidebar {
+    flex: 1;
+  }
+
+  .other-content {
+    flex: 4;
+  }
+}
