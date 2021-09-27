@@ -6,6 +6,11 @@ import { useAuth } from '../../contexts/auth_context';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
+  if (currentUser) {
+    console.log('THERE IS A CURRENT USER');
+  } else {
+    console.log('THER IS NO CURRENT USER');
+  }
 
   return (
     <Route

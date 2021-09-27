@@ -18,7 +18,6 @@ function App() {
             <Route path='/login' component={Login} />
             <Route path='/signup' component={SignUp} />
             <Route path='/preferences' component={Preferences} />
-            <Route path='/dashboard' component={Dashboard} />
             <Route component={NotFound} />
           </Switch>
         </AuthProvider>
