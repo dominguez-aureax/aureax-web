@@ -29,3 +29,5 @@ var routes = [
     path: '/referrals',
   },
 ];
+
+export default routes;
