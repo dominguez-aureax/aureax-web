@@ -6,7 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
 import { PrivateRoute } from './components';
-import { Dashboard, Login, NotFound, Preferences, SignUp } from './pages';
+import { Dashboard, Login, Members, NotFound, Preferences, SignUp } from './pages';
 import { AuthProvider } from './contexts/auth_context';
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <AuthProvider>
           <Switch>
             <PrivateRoute exact path='/' component={Dashboard} />
+            <Route path='/members' component={Members} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={SignUp} />
             <Route path='/preferences' component={Preferences} />
