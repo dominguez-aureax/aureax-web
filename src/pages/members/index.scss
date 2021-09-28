@@ -1,0 +1,11 @@
+$primary-color: #eeeeee;
+
+.members-page {
+  .table {
+    color: $primary-color;
+
+    td {
+      color: $primary-color;
+    }
+  }
+}
