@@ -14,6 +14,8 @@ import Boundary from './boundary';
  * @param {Function} getComponentProps - Transforms the given parameters to necessary state changes (sometimes unchanged).
  * @param {Object} propTypes - The PropTypes necessary for the Container and/or Component;
  * @param {Object} defaultProps - The default state of props if not given.
+ *
+ * @return {Element} Returns a React Element that has combined the Container with Component.
  */
 export default (Component, getComponentProps, propTypes, defaultProps, displayName) => {
   const Container = (props) => <Component {...getComponentProps(props)} />;
