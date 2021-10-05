@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+#TODO: REMOVE SERVER ONCE READY
+/server
 
 # testing
 /coverage

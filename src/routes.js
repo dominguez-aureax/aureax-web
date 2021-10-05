@@ -17,9 +17,6 @@ var routes = [
     component: Dashboard,
   },
   {
-    path: '/login',
-  },
-  {
     path: '/jobs',
   },
   {
