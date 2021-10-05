@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    User: {},
+    User: 'NO AVAILABLE USER',
     ID: 'User ID unavailable',
     ReferralLink: 'No availalble Referral Link',
     Loading: true,
@@ -11,19 +11,19 @@ export const authSlice = createSlice({
   },
   reducers: {
     changeUser: (state, action) => {
-      state.value = action.payload;
+      state.User = action.payload;
     },
     changeID: (state, action) => {
-      state.value = action.payload;
+      state.ID = action.payload;
     },
     changeReferralLink: (state, action) => {
-      state.value = action.payload;
+      state.ReferralLink = action.payload;
     },
     changeLoading: (state, action) => {
-      state.value = action.payload;
+      state.Loading = action.payload;
     },
     changeName: (state, action) => {
-      state.value = action.payload;
+      state.Name = action.payload;
     },
   },
 });

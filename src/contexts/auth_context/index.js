@@ -1,3 +1,3 @@
 export { default as AuthContext } from './container';
-export { authReducer } from './slice';
+export { default as authReducer } from './slice';
 export { useAuth } from './component';

@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { auth } from '../../firebase';
 import PropTypes from 'prop-types';
-import { updateId } from './slice';
 
 const AuthContext = React.createContext();
 
@@ -9,15 +8,17 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-const Component = ({
+function Component({
   children,
   currentUser,
+  currentLoading,
   updateName,
   updateUser,
   updateID,
   updateReferralLink,
   updateLoading,
-}) => {
+}) {
+  console.log('STARTING...');
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
   }
@@ -44,20 +45,34 @@ const Component = ({
   }
 
   useEffect(() => {
+    console.log('USE EFFECT CALLED');
     const unsubscribe = auth.onAuthStateChanged((user) => {
       updateLoading(true);
+      console.log('LOADING IS NOW TRUE');
       if (user) {
-        updateUser(user);
+        console.log('USE EFFECT HAS FOUND A USER');
+        updateUser(JSON.stringify(user));
         updateName(user.displayName);
-        updateID(user.getIdToken);
+        user
+          .getIdToken()
+          .then((result) => {
+            updateID(result);
+          })
+          .catch((e) => {
+            console.log('AUTH PROVIDER --- ID ERROR DETECTED');
+            console.log(e);
+            updateID('ERROR RETRIEVING ID');
+          });
         updateReferralLink('TODO: Implement Referral Link function');
       } else {
-        updateUser({});
+        console.log('USE EFFECT HAS NOT FOUND A USER');
+        updateUser('');
         updateName('NO CURRENT DISPLAY NAME');
         updateID('NO CURRENT ID');
         updateReferralLink('NO CURRENT REFERRAL LINK');
       }
       updateLoading(false);
+      console.log('LOADING IS NOW FALSE');
     });
 
     return unsubscribe;
@@ -65,6 +80,7 @@ const Component = ({
 
   const value = {
     currentUser,
+    currentLoading,
     login,
     signup,
     logout,
@@ -73,21 +89,29 @@ const Component = ({
     updatePassword,
   };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
-};
+  return <AuthContext.Provider value={value}>{!currentLoading && children}</AuthContext.Provider>;
+}
 
-Component.displayName = 'AuthProvider';
+Component.displayName = 'AuthContext';
 
 Component.propTypes = {
   children: PropTypes.element.isRequired,
-  currentUser: PropTypes.object.isRequired,
-  updateName: PropTyhpes.func.isRequired,
-  updateUser: PropTypes.func.isRequired,
-  updateId: PropTypes.func.isRequired,
-  updateReferralLink: PropTypes.func.isRequired,
-  updateLoading: PropTypes.func.isRequired,
+  currentUser: PropTypes.string,
+  currentLoading: PropTypes.bool.isRequired,
+  updateName: PropTypes.func,
+  updateUser: PropTypes.func,
+  updateID: PropTypes.func,
+  updateReferralLink: PropTypes.func,
+  updateLoading: PropTypes.func,
 };
 
-Component.defaultProps = {};
+Component.defaultProps = {
+  currentUser: '',
+  updateUser: () => console.log('ERROR!!!'),
+  updateName: () => console.log('ERROR!!!'),
+  updateID: () => console.log('ERROR!!!'),
+  updateReferralLink: () => console.log('ERROR!'),
+  updateLoading: () => console.log('ERROR!!!'),
+};
 
 export default Component;

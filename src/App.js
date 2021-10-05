@@ -7,12 +7,12 @@ import './App.scss';
 
 import { PrivateRoute } from './components';
 import { Dashboard, Login, Members, NotFound, Preferences, SignUp } from './pages';
-import { AuthProvider } from './contexts/auth_context';
+import { AuthContext } from './contexts/auth_context';
 function App() {
   return (
     <div className='App align-items-center justify-content-center' style={{ minHeight: '100vh' }}>
       <BrowserRouter>
-        <AuthProvider>
+        <AuthContext>
           <Switch>
             <PrivateRoute exact path='/' component={Dashboard} />
             <Route path='/members' component={Members} />
@@ -21,7 +21,7 @@ function App() {
             <Route path='/preferences' component={Preferences} />
             <Route component={NotFound} />
           </Switch>
-        </AuthProvider>
+        </AuthContext>
       </BrowserRouter>
     </div>
   );
