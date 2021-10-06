@@ -18,7 +18,6 @@ function Component({
   updateReferralLink,
   updateLoading,
 }) {
-  console.log('STARTING...');
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
   }
@@ -45,12 +44,9 @@ function Component({
   }
 
   useEffect(() => {
-    console.log('USE EFFECT CALLED');
     const unsubscribe = auth.onAuthStateChanged((user) => {
       updateLoading(true);
-      console.log('LOADING IS NOW TRUE');
       if (user) {
-        console.log('USE EFFECT HAS FOUND A USER');
         updateUser(JSON.stringify(user));
         updateName(user.displayName);
         user
@@ -65,7 +61,6 @@ function Component({
           });
         updateReferralLink('TODO: Implement Referral Link function');
       } else {
-        console.log('USE EFFECT HAS NOT FOUND A USER');
         updateUser('');
         updateName('NO CURRENT DISPLAY NAME');
         updateID('NO CURRENT ID');
