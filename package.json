@@ -1,6 +1,6 @@
 {
-  "name": "aureax-web-2",
-  "homepage": ".",
+  "name": "aureax-web",
+  "homepage": "http://13.59.141.130/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
