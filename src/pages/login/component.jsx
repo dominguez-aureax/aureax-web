@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Button, Form, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { useAuth } from '../../contexts/auth_context';
 
@@ -65,6 +64,4 @@ export default function Login() {
   );
 }
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
+Login.propTypes = {};
