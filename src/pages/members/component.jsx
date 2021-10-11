@@ -1,17 +1,16 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Alert, Container, Table } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 //eslint-disable-next-line
 import { CreateRow, Layout } from '../../components';
 
-import data from './mock-data.json';
-
 import './index.scss';
 
-const Component = () => {
-  // eslint-disable-next-line
-  const [members, setMembers] = useState(data);
-  console.log(members);
+const Component = ({ members }) => {
+  // Convert serialized member array into regular object array;
+  const membersRef = [];
+  members.forEach((member) => membersRef.push(JSON.parse(member)));
 
   return (
     <Layout>
@@ -27,16 +26,11 @@ const Component = () => {
               </tr>
             </thead>
             <tbody>
-              {members.map((member, index) => (
+              {membersRef.map((member, index) => (
                 <Fragment key={index}>
                   <CreateRow member={member} index={index} />
                 </Fragment>
               ))}
-              <tr>
-                <td>1</td>
-                <td>Melchor Dominguez</td>
-                <td>mdmngz411@gmail.com</td>
-              </tr>
             </tbody>
           </Table>
         </Container>
@@ -47,8 +41,12 @@ const Component = () => {
 
 Component.displayName = 'Members';
 
-Component.propTypes = {};
+Component.propTypes = {
+  members: PropTypes.array,
+};
 
-Component.defaultProps = {};
+Component.defaultProps = {
+  members: [],
+};
 
 export default Component;
