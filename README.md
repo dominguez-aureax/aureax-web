@@ -32,7 +32,7 @@ git pull origin master
 
 ```sh
 npm run build
-cp -r /build ~/var/www
+cp -r /build/* /var/www/aureax-web
 ```
 
 ## Step 4: Restart nginx to update the website
