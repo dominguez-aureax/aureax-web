@@ -11,7 +11,6 @@ import { PrivateRoute } from './components';
 import { Dashboard, Login, Members, NotFound, Preferences, SignUp } from './pages';
 import { AuthContext } from './contexts/auth_context';
 function App() {
-  // eslint-disable-next-line
   const db = Firebase.firestore();
   return (
     <div className='App align-items-center justify-content-center' style={{ minHeight: '100vh' }}>
