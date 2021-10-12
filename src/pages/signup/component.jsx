@@ -26,9 +26,14 @@ export default function SignUp() {
     try {
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-    } catch {
-      setError('Failed to create an account');
+      await signup(
+        emailRef.current.value,
+        passwordRef.current.value,
+        nameRef.current.value,
+        phoneRef.current.value,
+      );
+    } catch (e) {
+      setError(`Failed to create an account: ${e}`);
     }
 
     setLoading(false);

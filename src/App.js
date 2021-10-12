@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-import Firebase from './firebase';
+import { db } from './firebase';
 
 import './App.scss';
 
@@ -11,7 +11,6 @@ import { PrivateRoute } from './components';
 import { Dashboard, Login, Members, NotFound, Preferences, SignUp } from './pages';
 import { AuthContext } from './contexts/auth_context';
 function App() {
-  const db = Firebase.firestore();
   return (
     <div className='App align-items-center justify-content-center' style={{ minHeight: '100vh' }}>
       <BrowserRouter>

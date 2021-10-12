@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 import PropTypes from 'prop-types';
 
 const AuthContext = React.createContext();
@@ -49,14 +49,37 @@ function Component({
    *
    * @param {String} email -  The user's email address.
    * @param {String} password - The user's chosen password.
+   * @param {String} displayName - The user's chosen display name.
+   * @param {String} [phone] - The user's chosen phone number.
    *
    * @returns {firebase.auth.UserCredential} - UserCredential which contains 3 keys :
    * 		operationTypes: the type of operation which was used to authenticate the user (such as sign-in or link).
    * 		providerID: The provider which was used to authenticate the user
    * 		user - The user authenticated by this credential.
    */
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  async function signup(email, password, name, phone) {
+    console.log(`email: ${email}, password: ${password}, name: ${name}, phone: ${phone}`);
+    try {
+      const value = await auth.createUserWithEmailAndPassword(email, password);
+      console.log('successful sign up');
+      // If error has not been thrown, user has successfully been signed up.
+      const currentU = auth.currentUser;
+      await currentU.updateProfile({ displayName: name });
+      console.log(`UPDATED PROFILE: ${currentU.displayName}`);
+      db.collection('users')
+        .doc(email)
+        .set({
+          name: name,
+          email: email,
+          phone: phone,
+        })
+        .then(() => console.log(`A NEW USER HAS BEEN ADDED: ${name}`))
+        .catch((e) => console.log(`FAILED TO ADD USER: ${e}`));
+      return value;
+    } catch (e) {
+      console.log(`unsuccessful signup: ${e}`);
+      return e;
+    }
   }
 
   /**
