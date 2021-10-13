@@ -1,1 +1,2 @@
-export { default } from './component';
+export { default } from './container';
+export { default as signUpReducer } from './slice';

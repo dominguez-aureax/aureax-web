@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: 'Auth',
   initialState: {
     User: 'NO AVAILABLE USER',
     ID: 'User ID unavailable',
@@ -33,9 +33,9 @@ export const { changeUser, changeID, changeReferralLink, changeLoading, changeNa
   authSlice.actions;
 
 // Selectors
-export const selectUser = (state) => state.auth.User;
-export const selectID = (state) => state.auth.ID;
-export const selectReferralLink = (state) => state.auth.ReferralLink;
-export const selectLoading = (state) => state.auth.Loading;
+export const selectUser = (state) => state.Auth.User;
+export const selectID = (state) => state.Auth.ID;
+export const selectReferralLink = (state) => state.Auth.ReferralLink;
+export const selectLoading = (state) => state.Auth.Loading;
 
 export default authSlice.reducer;
