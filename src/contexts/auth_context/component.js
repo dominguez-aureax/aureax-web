@@ -155,6 +155,17 @@ function Component({
     currentUser.updatePassword(password);
   }
 
+  /**
+   * Function which will return the current user.
+   *
+   * The purpose of this function is to provide valid checks for a user when necessary.
+   *
+   * @returns - Firebase.user
+   */
+  function getUser() {
+    return currentUser;
+  }
+
   // The useEffect Hook lets us perform side effects in function components
   // Similar to componentDidMount and componentDidUpdate
   useEffect(() => {
@@ -200,6 +211,7 @@ function Component({
     resetPassword,
     updateEmail,
     updatePassword,
+    getUser,
   };
 
   return <AuthContext.Provider value={value}>{!currentLoading && children}</AuthContext.Provider>;

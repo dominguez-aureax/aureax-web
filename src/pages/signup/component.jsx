@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { useAuth } from '../../contexts/auth_context';
@@ -24,7 +24,8 @@ const Component = ({
   updatePassword,
   updatePasswordConfirm,
 }) => {
-  const { signup } = useAuth();
+  const { signup, getUser } = useAuth();
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -44,6 +45,13 @@ const Component = ({
     }
 
     updateLoading(false);
+
+    // Check if the user was logged in
+    const user = getUser();
+    if (user) {
+      console.log('moving to dashboard...');
+      history.push('/dashboard');
+    }
   }
 
   return (
@@ -99,7 +107,7 @@ const Component = ({
           <Form.Control
             type='password'
             placeholder='Password'
-            defaultValue={currentPassword}
+            defaultValue={currentPasswordConfirm}
             onChange={(event) => updatePasswordConfirm(event.target.value)}
           />
         </Form.Group>
