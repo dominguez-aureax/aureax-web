@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Alert, Container, Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-//eslint-disable-next-line
 import { CreateRow, Layout } from '../../components';
 
 import './index.scss';

@@ -17,6 +17,7 @@ function App() {
         <AuthContext>
           <Switch>
             <PrivateRoute exact path='/' component={Dashboard} />
+            <PrivateRoute path='/dashboard' component={Dashboard} />
             <Route path='/members'>
               <Members db={db} />
             </Route>

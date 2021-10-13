@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const membersSlice = createSlice({
-  name: 'membersPage',
+  name: 'MembersPage',
   initialState: {
     members: [],
   },
@@ -27,6 +27,6 @@ export const membersSlice = createSlice({
 export const { addMember, deleteMember } = membersSlice.actions;
 
 // Selectors
-export const selectMembers = (state) => state.membersPage.members;
+export const selectMembers = (state) => state.MembersPage.members;
 
 export default membersSlice.reducer;

@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { authReducer } from './contexts/auth_context';
-import { membersReducer } from './pages';
+import { membersReducer, signUpReducer } from './pages';
 
 export default configureStore({
   reducer: {
-    auth: authReducer,
-    membersPage: membersReducer,
+    Auth: authReducer,
+    MembersPage: membersReducer,
+    SignUpPage: signUpReducer,
   },
 });
