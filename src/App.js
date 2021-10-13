@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,6 +14,9 @@ import { AuthContext } from './contexts/auth_context';
 function App() {
   return (
     <div className='App align-items-center justify-content-center' style={{ minHeight: '100vh' }}>
+      <Helmet>
+        <title>Aureax</title>
+      </Helmet>
       <BrowserRouter>
         <AuthContext>
           <Switch>
